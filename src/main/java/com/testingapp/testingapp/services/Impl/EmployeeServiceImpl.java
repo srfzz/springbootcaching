@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.testingapp.testingapp.exceptions.ResourceAlreadyExistException;
 import com.testingapp.testingapp.exceptions.ResourceNotFoundException;
+import jakarta.persistence.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ import org.springframework.util.ReflectionUtils;
 
 
 @Service
+@Cacheable
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
