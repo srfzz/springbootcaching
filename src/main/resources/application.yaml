@@ -9,16 +9,32 @@ spring:
     username: postgres
     password: 123456
     driver-class-name: org.postgresql.Driver
-#  flyway:
-#    enabled: true
-#    baseline-on-migrate: true
-#    callback-locations: classpath:db/migration
   jpa:
+    open-in-view: false # Recommended for production to avoid N+1 issues
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
-        show_sql: true
         format_sql: true
+        highlight_sql: true # Makes SQL easier to read in colorful themes
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 123456
 
+logging:
+  level:
+    root: INFO
+    # Target your specific package for your Mapper and Exception Handler
+    com.testingapp.testingapp: DEBUG 
+    com.testingapp.testingapp.mapper: TRACE
+    com.testingapp.testingapp.advice: TRACE
+  file:
+    name: logs/springcache.log
+  logback:
+    rollingpolicy:
+      # These must be on the same line as the key
+      max-file-size: 100MB
+      max-history: 7

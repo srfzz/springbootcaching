@@ -6,24 +6,32 @@ import com.testingapp.testingapp.entity.EmployeeEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class EmployeeMapper {
-    public EmployeeEntity toEntity(EmployeeRequestDto requestDto)
-    {
-        if(requestDto==null)
-        {
+
+    public EmployeeEntity toEntity(EmployeeRequestDto requestDto) {
+        if (requestDto == null) {
             return null;
         }
-        return EmployeeEntity.builder().firstName(requestDto.firstName()).lastName(requestDto.lastName()).email(requestDto.email()).build();
+        return EmployeeEntity.builder()
+                .firstName(requestDto.firstName())
+                .lastName(requestDto.lastName())
+                .email(requestDto.email())
+                .build();
     }
-    public EmployeeResponseDto toDto(EmployeeEntity entity)
-    {
-        if(entity==null)
-        {
+
+    public EmployeeResponseDto toDto(EmployeeEntity entity) {
+        if (entity == null) {
             return null;
         }
-        return EmployeeResponseDto.builder().id(entity.getId()).firstName(entity.getFirstName()).lastName(entity.getLastName()).email(entity.getEmail()).build();
+      
+        return EmployeeResponseDto.builder()
+                .id(entity.getId())
+                .firstName(entity.getFirstName())
+                .lastName(entity.getLastName())
+                .email(entity.getEmail())
+                .build();
     }
+
     public void updateEntityFromDto(EmployeeRequestDto requestDto, EmployeeEntity entity) {
         if (requestDto == null || entity == null) {
             return;
@@ -32,12 +40,12 @@ public class EmployeeMapper {
         entity.setLastName(requestDto.lastName());
         entity.setEmail(requestDto.email());
     }
+
     public void patchEntityFromDto(EmployeeRequestDto requestDto, EmployeeEntity entity) {
         if (requestDto == null || entity == null) {
             return;
         }
 
-        // Only update if the field is not null
         if (requestDto.firstName() != null) {
             entity.setFirstName(requestDto.firstName());
         }

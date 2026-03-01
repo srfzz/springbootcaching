@@ -1,0 +1,152 @@
+
+2026-03-01T20:10:11.501+05:30  INFO 10232 --- [springcache] [main] c.t.testingapp.TestingappApplication     : Starting TestingappApplication using Java 17.0.12 with PID 10232 (G:\coding_shuttle\springbootcaching\target\classes started by IMSRFZ in G:\coding_shuttle\springbootcaching)
+2026-03-01T20:10:11.504+05:30 DEBUG 10232 --- [springcache] [main] c.t.testingapp.TestingappApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-03-01T20:10:11.506+05:30  INFO 10232 --- [springcache] [main] c.t.testingapp.TestingappApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-01T20:10:12.676+05:30  INFO 10232 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:10:12.679+05:30  INFO 10232 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-01T20:10:12.820+05:30  INFO 10232 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 133 ms. Found 1 JPA repository interface.
+2026-03-01T20:10:12.835+05:30  INFO 10232 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:10:12.837+05:30  INFO 10232 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-01T20:10:12.849+05:30  INFO 10232 --- [springcache] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.testingapp.testingapp.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-01T20:10:12.850+05:30  INFO 10232 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2026-03-01T20:10:13.548+05:30  INFO 10232 --- [springcache] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-01T20:10:13.561+05:30  INFO 10232 --- [springcache] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-01T20:10:13.563+05:30  INFO 10232 --- [springcache] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-03-01T20:10:13.628+05:30  INFO 10232 --- [springcache] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-01T20:10:13.629+05:30  INFO 10232 --- [springcache] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2070 ms
+2026-03-01T20:10:14.025+05:30  INFO 10232 --- [springcache] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-01T20:10:14.206+05:30  INFO 10232 --- [springcache] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@23a78c77
+2026-03-01T20:10:14.209+05:30  INFO 10232 --- [springcache] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-01T20:10:14.245+05:30  INFO 10232 --- [springcache] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/test (PostgreSQL 15.17)
+2026-03-01T20:10:14.331+05:30  INFO 10232 --- [springcache] [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.042s)
+2026-03-01T20:10:14.373+05:30  INFO 10232 --- [springcache] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-03-01T20:10:14.378+05:30  INFO 10232 --- [springcache] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-03-01T20:10:14.496+05:30  INFO 10232 --- [springcache] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-01T20:10:14.574+05:30  INFO 10232 --- [springcache] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-03-01T20:10:14.614+05:30  INFO 10232 --- [springcache] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-01T20:10:14.934+05:30  INFO 10232 --- [springcache] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-01T20:10:15.647+05:30  INFO 10232 --- [springcache] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-01T20:10:15.688+05:30  INFO 10232 --- [springcache] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-01T20:10:17.333+05:30  INFO 10232 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-01T20:10:17.334+05:30  INFO 10232 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-01T20:10:17.365+05:30  INFO 10232 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-01T20:10:17.380+05:30  INFO 10232 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 46 ms
+2026-03-01T20:10:17.516+05:30  INFO 10232 --- [springcache] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-03-01T20:10:17.521+05:30  INFO 10232 --- [springcache] [main] c.t.testingapp.TestingappApplication     : Started TestingappApplication in 6.462 seconds (process running for 6.882)
+2026-03-01T20:12:17.269+05:30  INFO 24040 --- [springcache] [main] c.t.testingapp.TestingappApplication     : Starting TestingappApplication using Java 17.0.12 with PID 24040 (G:\coding_shuttle\springbootcaching\target\classes started by IMSRFZ in G:\coding_shuttle\springbootcaching)
+2026-03-01T20:12:17.271+05:30 DEBUG 24040 --- [springcache] [main] c.t.testingapp.TestingappApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-03-01T20:12:17.272+05:30  INFO 24040 --- [springcache] [main] c.t.testingapp.TestingappApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-01T20:12:18.274+05:30  INFO 24040 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:12:18.276+05:30  INFO 24040 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-01T20:12:18.408+05:30  INFO 24040 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122 ms. Found 1 JPA repository interface.
+2026-03-01T20:12:18.423+05:30  INFO 24040 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:12:18.424+05:30  INFO 24040 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-01T20:12:18.434+05:30  INFO 24040 --- [springcache] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.testingapp.testingapp.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-01T20:12:18.434+05:30  INFO 24040 --- [springcache] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-03-01T20:12:19.137+05:30  INFO 24040 --- [springcache] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-01T20:12:19.148+05:30  INFO 24040 --- [springcache] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-01T20:12:19.149+05:30  INFO 24040 --- [springcache] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-03-01T20:12:19.217+05:30  INFO 24040 --- [springcache] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-01T20:12:19.218+05:30  INFO 24040 --- [springcache] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1903 ms
+2026-03-01T20:12:19.609+05:30  INFO 24040 --- [springcache] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-01T20:12:19.763+05:30  INFO 24040 --- [springcache] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7434ee13
+2026-03-01T20:12:19.765+05:30  INFO 24040 --- [springcache] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-01T20:12:19.794+05:30  INFO 24040 --- [springcache] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/test (PostgreSQL 15.17)
+2026-03-01T20:12:19.862+05:30  INFO 24040 --- [springcache] [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.034s)
+2026-03-01T20:12:19.921+05:30  INFO 24040 --- [springcache] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-03-01T20:12:19.925+05:30  INFO 24040 --- [springcache] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-03-01T20:12:20.028+05:30  INFO 24040 --- [springcache] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-01T20:12:20.096+05:30  INFO 24040 --- [springcache] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-03-01T20:12:20.131+05:30  INFO 24040 --- [springcache] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-01T20:12:20.433+05:30  INFO 24040 --- [springcache] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-01T20:12:21.185+05:30  INFO 24040 --- [springcache] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-01T20:12:21.222+05:30  INFO 24040 --- [springcache] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-01T20:12:22.977+05:30  INFO 24040 --- [springcache] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-01T20:12:23.060+05:30  INFO 24040 --- [springcache] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-03-01T20:12:23.075+05:30  INFO 24040 --- [springcache] [main] c.t.testingapp.TestingappApplication     : Started TestingappApplication in 6.171 seconds (process running for 6.592)
+2026-03-01T20:12:23.158+05:30  INFO 24040 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-01T20:12:23.158+05:30  INFO 24040 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-01T20:12:23.160+05:30  INFO 24040 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-03-01T20:19:13.089+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Starting TestingappApplication using Java 17.0.12 with PID 25628 (G:\coding_shuttle\springbootcaching\target\classes started by IMSRFZ in G:\coding_shuttle\springbootcaching)
+2026-03-01T20:19:13.092+05:30 DEBUG 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-03-01T20:19:13.093+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-01T20:19:13.142+05:30  INFO 25628 --- [springcache] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-01T20:19:13.143+05:30  INFO 25628 --- [springcache] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-01T20:19:14.136+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:19:14.138+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-01T20:19:14.278+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131 ms. Found 1 JPA repository interface.
+2026-03-01T20:19:14.292+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:19:14.293+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-01T20:19:14.308+05:30  INFO 25628 --- [springcache] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.testingapp.testingapp.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-01T20:19:14.309+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2026-03-01T20:19:15.113+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-01T20:19:15.130+05:30  INFO 25628 --- [springcache] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-01T20:19:15.131+05:30  INFO 25628 --- [springcache] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-03-01T20:19:15.193+05:30  INFO 25628 --- [springcache] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-01T20:19:15.194+05:30  INFO 25628 --- [springcache] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2050 ms
+2026-03-01T20:19:15.585+05:30  INFO 25628 --- [springcache] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-01T20:19:15.751+05:30  INFO 25628 --- [springcache] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@d6ba488
+2026-03-01T20:19:15.754+05:30  INFO 25628 --- [springcache] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-01T20:19:15.783+05:30  INFO 25628 --- [springcache] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/test (PostgreSQL 15.17)
+2026-03-01T20:19:15.855+05:30  INFO 25628 --- [springcache] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.036s)
+2026-03-01T20:19:15.915+05:30  INFO 25628 --- [springcache] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-03-01T20:19:15.920+05:30  INFO 25628 --- [springcache] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-03-01T20:19:16.030+05:30  INFO 25628 --- [springcache] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-01T20:19:16.118+05:30  INFO 25628 --- [springcache] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-03-01T20:19:16.166+05:30  INFO 25628 --- [springcache] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-01T20:19:16.504+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-01T20:19:17.333+05:30  INFO 25628 --- [springcache] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-01T20:19:17.377+05:30  INFO 25628 --- [springcache] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-01T20:19:18.973+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-03-01T20:19:18.984+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-01T20:19:19.075+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-03-01T20:19:19.088+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Started TestingappApplication in 6.392 seconds (process running for 6.934)
+2026-03-01T20:19:21.901+05:30  INFO 25628 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-01T20:19:21.902+05:30  INFO 25628 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-01T20:19:21.905+05:30  INFO 25628 --- [springcache] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-03-01T20:25:11.190+05:30  INFO 25628 --- [springcache] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-03-01T20:25:11.369+05:30  INFO 25628 --- [springcache] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-01T20:25:11.373+05:30  INFO 25628 --- [springcache] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-01T20:25:11.379+05:30  INFO 25628 --- [springcache] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-01T20:25:11.462+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Starting TestingappApplication using Java 17.0.12 with PID 25628 (G:\coding_shuttle\springbootcaching\target\classes started by IMSRFZ in G:\coding_shuttle\springbootcaching)
+2026-03-01T20:25:11.462+05:30 DEBUG 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-03-01T20:25:11.463+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-01T20:25:11.699+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:25:11.700+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-01T20:25:11.710+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interface.
+2026-03-01T20:25:11.712+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-01T20:25:11.713+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-01T20:25:11.717+05:30  INFO 25628 --- [springcache] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.testingapp.testingapp.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-01T20:25:11.718+05:30  INFO 25628 --- [springcache] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-03-01T20:25:11.831+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-01T20:25:11.832+05:30  INFO 25628 --- [springcache] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-01T20:25:11.832+05:30  INFO 25628 --- [springcache] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-03-01T20:25:11.856+05:30  INFO 25628 --- [springcache] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-01T20:25:11.856+05:30  INFO 25628 --- [springcache] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 392 ms
+2026-03-01T20:25:11.943+05:30  INFO 25628 --- [springcache] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-03-01T20:25:11.960+05:30  INFO 25628 --- [springcache] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@466579ba
+2026-03-01T20:25:11.961+05:30  INFO 25628 --- [springcache] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-03-01T20:25:11.963+05:30  INFO 25628 --- [springcache] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/test (PostgreSQL 15.17)
+2026-03-01T20:25:11.999+05:30  INFO 25628 --- [springcache] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.017s)
+2026-03-01T20:25:12.082+05:30  INFO 25628 --- [springcache] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-03-01T20:25:12.085+05:30  INFO 25628 --- [springcache] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-03-01T20:25:12.148+05:30  INFO 25628 --- [springcache] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-01T20:25:12.152+05:30  INFO 25628 --- [springcache] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-01T20:25:12.172+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-01T20:25:12.282+05:30  INFO 25628 --- [springcache] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-01T20:25:12.349+05:30  INFO 25628 --- [springcache] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-01T20:25:12.992+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-03-01T20:25:12.996+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-01T20:25:13.015+05:30  INFO 25628 --- [springcache] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-03-01T20:25:13.021+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Started TestingappApplication in 1.585 seconds (process running for 360.868)
+2026-03-01T20:25:13.024+05:30  INFO 25628 --- [springcache] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-03-01T20:25:22.563+05:30  INFO 25628 --- [springcache] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-01T20:25:22.563+05:30  INFO 25628 --- [springcache] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-01T20:25:22.563+05:30  INFO 25628 --- [springcache] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-01T20:26:25.870+05:30  INFO 25628 --- [springcache] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-03-01T20:26:26.030+05:30  INFO 25628 --- [springcache] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-01T20:26:26.031+05:30  INFO 25628 --- [springcache] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-03-01T20:26:26.033+05:30  INFO 25628 --- [springcache] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-03-01T20:26:26.101+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Starting TestingappApplication using Java 17.0.12 with PID 25628 (G:\coding_shuttle\springbootcaching\target\classes started by IMSRFZ in G:\coding_shuttle\springbootcaching)
+2026-03-01T20:26:26.102+05:30 DEBUG 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-03-01T20:26:26.102+05:30  INFO 25628 --- [springcache] [restartedMain] c.t.testingapp.TestingappApplication     : No active profile set, falling back to 1 default profile: "default"

@@ -2,6 +2,12 @@ package com.testingapp.testingapp.services.Impl;
 
 
 import java.lang.reflect.Field;
+
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -9,7 +15,7 @@ import java.util.stream.Collectors;
 
 import com.testingapp.testingapp.exceptions.ResourceAlreadyExistException;
 import com.testingapp.testingapp.exceptions.ResourceNotFoundException;
-import jakarta.persistence.Cacheable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +31,6 @@ import org.springframework.util.ReflectionUtils;
 
 
 @Service
-@Cacheable
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
@@ -37,18 +42,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Cacheable(value = "employeesList")
     @Transactional(readOnly = true)
     public List<EmployeeResponseDto> findAll() {
+     System.out.println("Fetching employees from database...");
         return employeeRepository.findAll().stream().map(employeeMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
+    @CachePut(value = "employee", key = "#id")
+    @Transactional(readOnly = true)
     public EmployeeResponseDto findById(Long id) {
 
         return employeeRepository.findById(id).map(employeeMapper::toDto).orElseThrow(()->new ResourceNotFoundException("Employee not found"));
     }
 
     @Override
+    @CacheEvict(value = "employeesList", allEntries = true) 
     @Transactional()
     public EmployeeResponseDto save(EmployeeRequestDto employeeRequestDto) {
         boolean isExist = employeeRepository.existsByEmail(employeeRequestDto.email());
@@ -63,6 +73,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     
     @Override
+    @CachePut(value = "employee", key = "#id")
+    @CacheEvict(value = "employeesList", allEntries = true)
     @Transactional()
     public EmployeeResponseDto update(EmployeeRequestDto employeeRequestDto, Long id) {
         EmployeeEntity employeeEntity = employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Employee not found"));
@@ -78,6 +90,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @CachePut(value = "employee", key = "#id")
+    @CacheEvict(value = "employeesList", allEntries = true)
     public EmployeeResponseDto UpdateEmployee(Map<String, Object> updates, Long id) {
        EmployeeEntity employeeEntity=employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Employee not found"));
        if(updates.containsKey("email")){
@@ -100,6 +114,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Caching(evict = {
+        @CacheEvict(value = "employee", key = "#id"),
+        @CacheEvict(value = "employeesList", allEntries = true)
+    })
     public void delete(Long id) {
         boolean isExist = employeeRepository.existsById(id);
         if(!isExist){

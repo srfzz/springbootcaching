@@ -57,10 +57,10 @@ class EmployeeServiceImplTest {
 
         //assert
 
-        assertThat(employeeResponseDto.id().equals(id)).isTrue();
-        assertThat(employeeResponseDto.firstName().equals(mockEployeeEntity.getFirstName())).isTrue();
-        assertThat(employeeResponseDto.lastName().equals(mockEployeeEntity.getLastName())).isTrue();
-        assertThat(employeeResponseDto.email().equals(mockEployeeEntity.getEmail())).isTrue();
+        assertThat(employeeResponseDto.getId().equals(id)).isTrue();
+        assertThat(employeeResponseDto.getFirstName().equals(mockEployeeEntity.getFirstName())).isTrue();
+        assertThat(employeeResponseDto.getLastName().equals(mockEployeeEntity.getLastName())).isTrue();
+        assertThat(employeeResponseDto.getEmail().equals(mockEployeeEntity.getEmail())).isTrue();
         verify(employeeRepository,times(4)).findById(id);
         verify(employeeRepository,times(2)).save(null);
     }

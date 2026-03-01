@@ -1,7 +1,20 @@
 package com.testingapp.testingapp.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
+@Data
 @Builder
-public record EmployeeResponseDto(Long id, String firstName, String lastName, String email) {
+@NoArgsConstructor
+@AllArgsConstructor
+public class EmployeeResponseDto implements Serializable {
+
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String email;
 }
