@@ -21,7 +21,6 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ReflectionUtils;
 
@@ -130,13 +129,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional()
     public EmployeeResponseDto incrementSalary(Long id, Double incrementAmount) {
 
         EmployeeEntity employeeEntity = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
         if (employeeEntity.getSalaryAccount() == null) {
             throw new ResourceNotFoundException("Salary account not found for employee");
+        }
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
         }
         BigDecimal increment = BigDecimal.valueOf(incrementAmount);
         if (increment.compareTo(BigDecimal.ZERO) < 0) {

@@ -1,7 +1,6 @@
 package com.testingapp.testingapp.entity;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,11 +29,13 @@ public class SalaryAccountEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Version
+  private Long version;
   @Builder.Default
-  private BigDecimal balance=BigDecimal.ZERO;
+  private BigDecimal balance = BigDecimal.ZERO;
 
- @OneToOne(fetch = FetchType.LAZY)
- @JoinColumn(name = "employee_id")
- @ToString.Exclude
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "employee_id")
+  @ToString.Exclude
   private EmployeeEntity employee;
 }
