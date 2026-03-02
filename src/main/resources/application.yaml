@@ -12,7 +12,8 @@ spring:
   jpa:
     open-in-view: false # Recommended for production to avoid N+1 issues
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop # Use 'update' or 'validate' in production
+      dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     properties:
       hibernate:
@@ -28,7 +29,7 @@ logging:
   level:
     root: INFO
     # Target your specific package for your Mapper and Exception Handler
-    com.testingapp.testingapp: DEBUG 
+    com.testingapp.testingapp: DEBUG
     com.testingapp.testingapp.mapper: TRACE
     com.testingapp.testingapp.advice: TRACE
   file:

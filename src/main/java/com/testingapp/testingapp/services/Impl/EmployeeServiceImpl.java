@@ -1,43 +1,41 @@
 package com.testingapp.testingapp.services.Impl;
 
-
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.testingapp.testingapp.dto.EmployeeRequestDto;
+import com.testingapp.testingapp.dto.EmployeeResponseDto;
+import com.testingapp.testingapp.entity.EmployeeEntity;
+import com.testingapp.testingapp.exceptions.ResourceAlreadyExistException;
+import com.testingapp.testingapp.exceptions.ResourceNotFoundException;
+import com.testingapp.testingapp.mapper.EmployeeMapper;
+import com.testingapp.testingapp.repository.EmployeeRepository;
+import com.testingapp.testingapp.services.contracts.EmployeeService;
+import com.testingapp.testingapp.services.contracts.SalaryAccountService;
 
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import com.testingapp.testingapp.exceptions.ResourceAlreadyExistException;
-import com.testingapp.testingapp.exceptions.ResourceNotFoundException;
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-
-
-import com.testingapp.testingapp.dto.EmployeeRequestDto;
-import com.testingapp.testingapp.dto.EmployeeResponseDto;
-import com.testingapp.testingapp.entity.EmployeeEntity;
-import com.testingapp.testingapp.mapper.EmployeeMapper;
-import com.testingapp.testingapp.repository.EmployeeRepository;
-import com.testingapp.testingapp.services.contracts.EmployeeService;
-
 import org.springframework.util.ReflectionUtils;
-
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
+    private final SalaryAccountService salaryAccountService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper,
+            SalaryAccountService salaryAccountService) {
         this.employeeRepository = employeeRepository;
         this.employeeMapper = employeeMapper;
+        this.salaryAccountService = salaryAccountService;
 
     }
 
@@ -45,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Cacheable(value = "employeesList")
     @Transactional(readOnly = true)
     public List<EmployeeResponseDto> findAll() {
-     System.out.println("Fetching employees from database...");
+        System.out.println("Fetching employees from database...");
         return employeeRepository.findAll().stream().map(employeeMapper::toDto).collect(Collectors.toList());
     }
 
@@ -54,38 +52,42 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional(readOnly = true)
     public EmployeeResponseDto findById(Long id) {
 
-        return employeeRepository.findById(id).map(employeeMapper::toDto).orElseThrow(()->new ResourceNotFoundException("Employee not found"));
+        return employeeRepository.findById(id).map(employeeMapper::toDto)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
     }
 
     @Override
-    @CacheEvict(value = "employeesList", allEntries = true) 
+    @CacheEvict(value = "employeesList", allEntries = true)
     @Transactional()
     public EmployeeResponseDto save(EmployeeRequestDto employeeRequestDto) {
         boolean isExist = employeeRepository.existsByEmail(employeeRequestDto.email());
-        if(isExist){
-            throw new ResourceAlreadyExistException("Employee with email " + employeeRequestDto.email() + " already exists.");
+        if (isExist) {
+            throw new ResourceAlreadyExistException(
+                    "Employee with email " + employeeRequestDto.email() + " already exists.");
         }
-            EmployeeEntity employeeEntity = employeeMapper.toEntity(employeeRequestDto);
-            EmployeeEntity savedEntity = employeeRepository.saveAndFlush(employeeEntity);
-            return employeeMapper.toDto(savedEntity);
-       
+        EmployeeEntity employeeEntity = employeeMapper.toEntity(employeeRequestDto);
+        EmployeeEntity savedEntity = employeeRepository.saveAndFlush(employeeEntity);
+        salaryAccountService.createSalaryAccountForEmployee(savedEntity);
+        return employeeMapper.toDto(savedEntity);
+
     }
 
-    
     @Override
     @CachePut(value = "employee", key = "#id")
     @CacheEvict(value = "employeesList", allEntries = true)
     @Transactional()
     public EmployeeResponseDto update(EmployeeRequestDto employeeRequestDto, Long id) {
-        EmployeeEntity employeeEntity = employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Employee not found"));
-        if(!employeeEntity.getEmail().equals(employeeRequestDto.email())){
-            if(employeeRepository.existsByEmail(employeeRequestDto.email())){
-                throw new ResourceAlreadyExistException("Employee with email " + employeeRequestDto.email() + " already exists.");
+        EmployeeEntity employeeEntity = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+        if (!employeeEntity.getEmail().equals(employeeRequestDto.email())) {
+            if (employeeRepository.existsByEmail(employeeRequestDto.email())) {
+                throw new ResourceAlreadyExistException(
+                        "Employee with email " + employeeRequestDto.email() + " already exists.");
             }
         }
-       employeeMapper.updateEntityFromDto(employeeRequestDto,employeeEntity);
+        employeeMapper.updateEntityFromDto(employeeRequestDto, employeeEntity);
 
-        EmployeeEntity savedEntity= employeeRepository.save(employeeEntity);
+        EmployeeEntity savedEntity = employeeRepository.save(employeeEntity);
         return employeeMapper.toDto(savedEntity);
     }
 
@@ -93,37 +95,57 @@ public class EmployeeServiceImpl implements EmployeeService {
     @CachePut(value = "employee", key = "#id")
     @CacheEvict(value = "employeesList", allEntries = true)
     public EmployeeResponseDto UpdateEmployee(Map<String, Object> updates, Long id) {
-       EmployeeEntity employeeEntity=employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Employee not found"));
-       if(updates.containsKey("email")){
-           String email=updates.get("email").toString();
-           if(!employeeEntity.getEmail().equals(email))
-           {
-             if(employeeRepository.existsByEmail(email)){
-                 throw  new ResourceAlreadyExistException("Employee with email " + email + " already exists.");
-             }
-           }
-       }
-       updates.forEach((k,v)->{
-           Field field= ReflectionUtils.findField(EmployeeEntity.class,k);
-           if(field!=null){
-               field.setAccessible(true);
-               ReflectionUtils.setField(field,employeeEntity,v);
-           }
-       });
+        EmployeeEntity employeeEntity = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+        if (updates.containsKey("email")) {
+            String email = updates.get("email").toString();
+            if (!employeeEntity.getEmail().equals(email)) {
+                if (employeeRepository.existsByEmail(email)) {
+                    throw new ResourceAlreadyExistException("Employee with email " + email + " already exists.");
+                }
+            }
+        }
+        updates.forEach((k, v) -> {
+            Field field = ReflectionUtils.findField(EmployeeEntity.class, k);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, employeeEntity, v);
+            }
+        });
         return employeeMapper.toDto(employeeEntity);
     }
 
     @Override
     @Caching(evict = {
-        @CacheEvict(value = "employee", key = "#id"),
-        @CacheEvict(value = "employeesList", allEntries = true)
+            @CacheEvict(value = "employee", key = "#id"),
+            @CacheEvict(value = "employeesList", allEntries = true)
     })
     public void delete(Long id) {
         boolean isExist = employeeRepository.existsById(id);
-        if(!isExist){
+        if (!isExist) {
             throw new ResourceNotFoundException("Employee not found");
         }
         employeeRepository.deleteById(id);
 
     }
+
+    @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public EmployeeResponseDto incrementSalary(Long id, Double incrementAmount) {
+
+        EmployeeEntity employeeEntity = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+        if (employeeEntity.getSalaryAccount() == null) {
+            throw new ResourceNotFoundException("Salary account not found for employee");
+        }
+        BigDecimal increment = BigDecimal.valueOf(incrementAmount);
+        if (increment.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Increment amount must be positive");
+        }
+        BigDecimal newBalance = employeeEntity.getSalaryAccount().getBalance().add(increment);
+        employeeEntity.getSalaryAccount().setBalance(newBalance);
+        EmployeeEntity savedEntity = employeeRepository.save(employeeEntity);
+        return employeeMapper.toDto(savedEntity);
+    }
+
 }
